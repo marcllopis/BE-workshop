@@ -1,12 +1,16 @@
 const express = require('express');
 const connection = require('./conf')
 const app = express();
-
+const cors = require('cors')
 const port = 5000;
 
 // global middleware
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
+
+// Allow cors policies
+app.use(cors())
+
 
 connection.connect((err)=>{
   if(err) {
